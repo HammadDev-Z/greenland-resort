@@ -27,14 +27,15 @@ const whatsapp = (message = 'Hello Greenland Resort, I would like to inquire abo
   `https://wa.me/923475250769?text=${encodeURIComponent(message)}`
 
 const images = {
-  hero: 'https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=2200&q=85',
-  valley: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=85',
-  mountain: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1400&q=85',
-  lake: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85',
-  interior: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85',
-  room: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=85',
+  exteriorSunset: '/gallery/exterior-sunset.webp',
+  exteriorCloudy: '/gallery/exterior-cloudy.webp',
+  valley: '/gallery/valley-view.webp',
+  roomClassic: '/gallery/room-classic.webp',
+  roomDeluxe: '/gallery/room-deluxe.webp',
+  roomStandard: '/gallery/room-standard.webp',
+  bathroom: '/gallery/bathroom.webp',
+  // TODO: replace with a real dining photo once available
   dining: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=85',
-  table: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=85',
 }
 
 const facilities = [
@@ -58,11 +59,11 @@ const amenityDetails = [
 
 const galleryImages = [
   { src: images.valley, alt: 'Mountain valley beneath a clear sky', size: 'tall' },
-  { src: images.interior, alt: 'Warm, modern resort interior', size: 'wide' },
-  { src: images.mountain, alt: 'Snow-dusted mountain peaks', size: 'square' },
-  { src: images.room, alt: 'Comfortable, softly lit room interior', size: 'wide' },
-  { src: images.dining, alt: 'Elegant dining table prepared for guests', size: 'tall' },
-  { src: images.lake, alt: 'Still mountain landscape with blue water', size: 'square' },
+  { src: images.roomClassic, alt: 'Warmly designed guest room with wooden furnishings', size: 'wide' },
+  { src: images.exteriorSunset, alt: 'Guest rooms at sunset with mountain views', size: 'square' },
+  { src: images.roomDeluxe, alt: 'Cozy, softly lit guest room interior', size: 'wide' },
+  { src: images.bathroom, alt: 'Bright, modern en-suite bathroom', size: 'tall' },
+  { src: images.roomStandard, alt: 'Comfortable guest room interior', size: 'square' },
 ]
 
 function SectionIntro({ eyebrow, title, children, light = false }: { eyebrow: string; title: string; children?: React.ReactNode; light?: boolean }) {
@@ -104,7 +105,7 @@ export default function Page() {
         <button className="menu-button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
       </header>
 
-      <section className="hero" id="home" style={{ backgroundImage: `url(${images.hero})` }}>
+      <section className="hero" id="home" style={{ backgroundImage: `url(${images.exteriorSunset})` }}>
         <div className="hero-overlay" />
         <div className="hero-content page-width">
           <p className="eyebrow hero-eyebrow">Welcome to Greenland Resort</p>
@@ -119,23 +120,23 @@ export default function Page() {
       <section className="amenities-strip"><div className="page-width facilities">{facilities.map(({ label, icon: Icon }) => <div className="facility" key={label}><Icon size={19} strokeWidth={1.5} /><span>{label}</span></div>)}</div></section>
 
       <section className="about section page-width" id="about">
-        <div className="about-image image-frame"><img src={images.valley} alt="A wide mountain valley in Skardu" /><span className="image-caption">The Karakoram, at its quietest</span></div>
+        <div className="about-image image-frame"><img src={images.valley} alt="A wide mountain valley in Skardu" loading="lazy" decoding="async" /><span className="image-caption">The Karakoram, at its quietest</span></div>
         <div className="about-copy"><SectionIntro eyebrow="The Greenland experience" title="A comfortable stay surrounded by Skardu's beauty"><p>Greenland Resort offers a welcoming place to stay while you explore the extraordinary landscapes of Skardu. Enjoy comfortable surroundings, complimentary breakfast, free Wi-Fi and parking, and easy access to the natural beauty that makes this region unforgettable.</p><p>Whether you&apos;re visiting for mountain adventures, a peaceful getaway, or time with family, Greenland Resort provides a relaxed base for your Skardu experience.</p></SectionIntro><a className="text-link dark-link" href="#stay">Discover Greenland Resort <ArrowRight size={16} /></a></div>
       </section>
 
-      <section className="destination section-dark" id="stay"><div className="page-width"><SectionIntro eyebrow="A place to pause" title="Discover Skardu" light><p>Where dramatic mountains, peaceful valleys, clear skies, and unforgettable landscapes come together.</p></SectionIntro><div className="experience-grid">{[[images.mountain, '01', 'Mountain adventures'], [images.lake, '02', 'Scenic landscapes'], [images.valley, '03', 'Peaceful getaways'], [images.hero, '04', 'Family exploration']].map(([src, number, title]) => <div className="experience-card" key={number} style={{ backgroundImage: `url(${src})` }}><div className="experience-shade" /><span>{number}</span><h3>{title}</h3><ArrowRight size={18} /></div>)}</div></div></section>
+      <section className="destination section-dark" id="stay"><div className="page-width"><SectionIntro eyebrow="A place to pause" title="Discover Skardu" light><p>Where dramatic mountains, peaceful valleys, clear skies, and unforgettable landscapes come together.</p></SectionIntro><div className="experience-grid">{[[images.exteriorCloudy, '01', 'Mountain adventures'], [images.valley, '02', 'Scenic landscapes'], [images.exteriorSunset, '03', 'Peaceful getaways'], [images.roomClassic, '04', 'Family exploration']].map(([src, number, title]) => <div className="experience-card" key={number} style={{ backgroundImage: `url(${src})` }}><div className="experience-shade" /><span>{number}</span><h3>{title}</h3></div>)}</div></div></section>
 
-      <section className="stay section page-width"><div className="stay-copy"><SectionIntro eyebrow="Your time in the mountains" title="Comfortable spaces for your Skardu getaway"><p>Find a relaxed base for your time in Skardu. Contact us directly to ask about current availability, room options, stay duration, and family requirements.</p></SectionIntro><a className="button button-forest" href={whatsapp('Hello Greenland Resort, I would like to know about available rooms and current rates.')} target="_blank" rel="noreferrer"><MessageCircle size={17} /> Ask about rooms on WhatsApp</a></div><div className="stay-images"><img className="stay-main-image" src={images.interior} alt="Warmly designed resort living space" /><img className="stay-small-image" src={images.room} alt="Quiet resort room interior" /></div></section>
+      <section className="stay section page-width"><div className="stay-copy"><SectionIntro eyebrow="Your time in the mountains" title="Comfortable spaces for your Skardu getaway"><p>Find a relaxed base for your time in Skardu. Contact us directly to ask about current availability, room options, stay duration, and family requirements.</p></SectionIntro><a className="button button-forest" href={whatsapp('Hello Greenland Resort, I would like to know about available rooms and current rates.')} target="_blank" rel="noreferrer"><MessageCircle size={17} /> Ask about rooms on WhatsApp</a></div><div className="stay-images"><img className="stay-main-image" src={images.roomClassic} alt="Warmly designed resort living space" loading="lazy" decoding="async" /><img className="stay-small-image" src={images.roomDeluxe} alt="Quiet resort room interior" loading="lazy" decoding="async" /></div></section>
 
       <section className="amenities section-sand" id="amenities"><div className="page-width"><SectionIntro eyebrow="Thoughtful essentials" title="Everything you need for a comfortable stay"><p>Simple, considered amenities to make your time at Greenland Resort feel easy.</p></SectionIntro><div className="amenity-grid">{amenityDetails.map(([title, description, Icon]) => <div className="amenity-item" key={title}><div className="amenity-icon"><Icon size={21} strokeWidth={1.4} /></div><div><h3>{title}</h3><p>{description}</p></div></div>)}</div></div></section>
 
-      <section className="dining section page-width" id="dining"><div className="dining-image"><img src={images.dining} alt="Atmospheric dining table at Greenland Resort" /></div><div className="dining-copy"><SectionIntro eyebrow="Gather around the table" title="Dine at Greenland Resort"><p>Enjoy convenient dining during your stay at Greenland Resort.</p></SectionIntro><a className="text-link dark-link" href={whatsapp('Hello Greenland Resort, I would like to ask about dining during my stay.')} target="_blank" rel="noreferrer">Ask about dining <ArrowRight size={16} /></a></div></section>
+      <section className="dining section page-width" id="dining"><div className="dining-image"><img src={images.dining} alt="Atmospheric dining table at Greenland Resort" loading="lazy" decoding="async" /></div><div className="dining-copy"><SectionIntro eyebrow="Gather around the table" title="Dine at Greenland Resort"><p>Enjoy convenient dining during your stay at Greenland Resort.</p></SectionIntro><a className="text-link dark-link" href={whatsapp('Hello Greenland Resort, I would like to ask about dining during my stay.')} target="_blank" rel="noreferrer">Ask about dining <ArrowRight size={16} /></a></div></section>
 
-      <section className="gallery section-sand" id="gallery"><div className="page-width"><div className="gallery-heading"><SectionIntro eyebrow="A glimpse of the journey" title="The Skardu feeling" /><p>Mountain light, quiet mornings, and spaces made for slowing down.</p></div><div className="gallery-grid">{galleryImages.map((image) => <button className={`gallery-item ${image.size}`} key={image.src} onClick={() => setActiveImage(image.src)} aria-label={`View larger image: ${image.alt}`}><img src={image.src} alt={image.alt} /></button>)}</div></div></section>
+      <section className="gallery section-sand" id="gallery"><div className="page-width"><div className="gallery-heading"><SectionIntro eyebrow="A glimpse of the journey" title="The Skardu feeling" /><p>Mountain light, quiet mornings, and spaces made for slowing down.</p></div><div className="gallery-grid">{galleryImages.map((image) => <button className={`gallery-item ${image.size}`} key={image.src} onClick={() => setActiveImage(image.src)} aria-label={`View larger image: ${image.alt}`}><img src={image.src} alt={image.alt} loading="lazy" decoding="async" /></button>)}</div></div></section>
 
       <section className="why section page-width"><SectionIntro eyebrow="Made for the moment" title="Why stay with us" /><div className="why-grid">{[['A beautiful setting', 'Experience the atmosphere of Skardu surrounded by spectacular natural scenery.', Mountain], ['Comfortable & convenient', 'Enjoy essential amenities including Wi-Fi, breakfast, parking, and dining.', Check], ['Family friendly', 'A welcoming option for guests traveling with children.', House], ['Easy booking', 'Contact the resort directly through WhatsApp for availability and reservations.', MessageCircle]].map(([title, text, Icon]) => <div className="why-item" key={title as string}><Icon size={23} strokeWidth={1.3} /><h3>{title as string}</h3><p>{text as string}</p></div>)}</div></section>
 
-      <section className="booking-cta" style={{ backgroundImage: `url(${images.mountain})` }}><div className="hero-overlay" /><div className="booking-inner page-width"><p className="eyebrow hero-eyebrow">Your next chapter begins here</p><h2>Planning your stay<br /><i>in Skardu?</i></h2><p>Talk directly with Greenland Resort about availability, room options, and your visit.</p><div className="hero-actions"><a className="button button-gold" href={whatsapp('Hello Greenland Resort, I am planning a stay in Skardu. Please share availability and current rates.')} target="_blank" rel="noreferrer"><MessageCircle size={17} /> Chat on WhatsApp</a><a className="text-link light-link" href={`tel:${phone}`}><Phone size={16} /> Call 0347 5250769</a></div></div></section>
+      <section className="booking-cta" style={{ backgroundImage: `url(${images.exteriorCloudy})` }}><div className="hero-overlay" /><div className="booking-inner page-width"><p className="eyebrow hero-eyebrow">Your next chapter begins here</p><h2>Planning your stay<br /><i>in Skardu?</i></h2><p>Talk directly with Greenland Resort about availability, room options, and your visit.</p><div className="hero-actions"><a className="button button-gold" href={whatsapp('Hello Greenland Resort, I am planning a stay in Skardu. Please share availability and current rates.')} target="_blank" rel="noreferrer"><MessageCircle size={17} /> Chat on WhatsApp</a><a className="text-link light-link" href={`tel:${phone}`}><Phone size={16} /> Call 0347 5250769</a></div></div></section>
 
       <section className="location section page-width" id="location"><div className="location-copy"><SectionIntro eyebrow="Come find us" title="Find Greenland Resort"><p>Skardu, Gilgit-Baltistan, Pakistan</p></SectionIntro><a className="button button-forest" href={mapsUrl} target="_blank" rel="noreferrer"><MapPin size={17} /> Open in Google Maps</a></div><a className="map-card" href={mapsUrl} target="_blank" rel="noreferrer" aria-label="Open Greenland Resort location in Google Maps"><div className="map-grid" /><div className="map-pin"><MapPin size={24} /></div><div className="map-label"><strong>Greenland Resort</strong><span>Skardu, Pakistan <ArrowRight size={14} /></span></div></a></section>
 
