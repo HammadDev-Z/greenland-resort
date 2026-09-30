@@ -2,12 +2,12 @@ import type { MetadataRoute } from 'next'
 import { siteUrl } from '@/lib/site-config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date()
   return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
+    { url: siteUrl, lastModified, changeFrequency: 'monthly', priority: 1 },
+    { url: `${siteUrl}/about`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/rooms`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/menu`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${siteUrl}/gallery`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
   ]
 }

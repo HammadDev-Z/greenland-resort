@@ -2,6 +2,9 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { mapsUrl, phone, siteName, siteUrl } from '@/lib/site-config'
+import { Nav } from '@/components/Nav'
+import { Footer } from '@/components/Footer'
+import { FloatingWhatsApp } from '@/components/FloatingWhatsApp'
 
 const title = 'Greenland Resort Skardu | Comfortable Stay in Skardu'
 const description =
@@ -116,7 +119,10 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(hotelJsonLd) }} />
-        {children}
+        <Nav />
+        <main>{children}</main>
+        <Footer />
+        <FloatingWhatsApp />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
