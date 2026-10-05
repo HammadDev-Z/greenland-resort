@@ -9,7 +9,7 @@ export function Footer() {
       <div className="page-width footer-grid">
         <div className="footer-brand">
           <Link href="/" className="brand brand-light">
-            <span className="brand-mark">G</span>
+            <span className="brand-mark"><img src="/logo-mark.png" alt="" /></span>
             <span>Greenland <em>Resort</em></span>
           </Link>
           <p>Your peaceful stay in Skardu.</p>
@@ -27,7 +27,7 @@ export function Footer() {
         <div>
           <p className="footer-label">Contact</p>
           <a href={`tel:${phone}`}>0347 5250769</a>
-          <Link href="/about#location">Skardu, Gilgit-Baltistan</Link>
+          <Link href="/#location">Skardu, Gilgit-Baltistan</Link>
           <a href={mapsUrl} target="_blank" rel="noreferrer">View location</a>
         </div>
         <div className="footer-action">

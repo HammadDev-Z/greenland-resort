@@ -34,7 +34,7 @@ export function Nav() {
   return (
     <header className={`site-nav ${scrolled ? 'site-nav-scrolled' : ''}`}>
       <Link href="/" className="brand" aria-label="Greenland Resort home">
-        <span className="brand-mark">G</span>
+        <span className="brand-mark"><img src="/logo-mark.png" alt="" /></span>
         <span>Greenland <em>Resort</em></span>
       </Link>
       <nav className={menuOpen ? 'nav-links nav-links-open' : 'nav-links'} aria-label="Main navigation">

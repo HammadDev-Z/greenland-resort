@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import { ArrowRight, MapPin, Phone } from 'lucide-react'
-import { mapsUrl, phone, whatsapp } from '@/lib/site-config'
+import { Phone } from 'lucide-react'
+import { phone, whatsapp } from '@/lib/site-config'
 import { images, experienceCards, whyStay } from '@/lib/content'
 import { SectionIntro } from '@/components/SectionIntro'
 import { WhatsAppIcon } from '@/components/WhatsAppIcon'
@@ -74,20 +74,6 @@ export default function AboutPage() {
             <a className="text-link light-link" href={`tel:${phone}`}><Phone size={16} /> Call 0347 5250769</a>
           </div>
         </div>
-      </section>
-
-      <section className="location section page-width" id="location">
-        <div className="location-copy">
-          <SectionIntro eyebrow="Come find us" title="Find Greenland Resort">
-            <p>Skardu, Gilgit-Baltistan, Pakistan</p>
-          </SectionIntro>
-          <a className="button button-forest" href={mapsUrl} target="_blank" rel="noreferrer"><MapPin size={17} /> Open in Google Maps</a>
-        </div>
-        <a className="map-card" href={mapsUrl} target="_blank" rel="noreferrer" aria-label="Open Greenland Resort location in Google Maps">
-          <div className="map-grid" />
-          <div className="map-pin"><MapPin size={24} /></div>
-          <div className="map-label"><strong>Greenland Resort</strong><span>Skardu, Pakistan <ArrowRight size={14} /></span></div>
-        </a>
       </section>
     </>
   )

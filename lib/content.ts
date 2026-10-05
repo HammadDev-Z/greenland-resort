@@ -38,6 +38,7 @@ export const amenityDetails = [
   ['Pet-Friendly', 'Traveling with a furry companion? Pets are welcome at Greenland Resort.', 'PawPrint'] as const,
   ['Room Service', 'Enjoy the convenience of room service during your stay.', 'ConciergeBell'] as const,
   ['Airport Shuttle', 'Convenient shuttle service available to and from the airport.', 'Bus'] as const,
+  ['Bonfire Nights', 'Gather around a bonfire in the evenings for a warm night under the Skardu sky.', 'Flame'] as const,
 ]
 
 export const galleryImages = [

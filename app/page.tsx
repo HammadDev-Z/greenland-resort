@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { ArrowDown, ArrowRight, Bus, Car, Coffee, ConciergeBell, House, MapPin, PawPrint, QrCode, Utensils, Wifi } from 'lucide-react'
-import { whatsapp } from '@/lib/site-config'
+import { ArrowDown, ArrowRight, Bus, Car, Coffee, ConciergeBell, Flame, House, MapPin, PawPrint, QrCode, Utensils, Wifi } from 'lucide-react'
+import { mapsUrl, whatsapp } from '@/lib/site-config'
 import { images, facilities, amenityDetails } from '@/lib/content'
 import { SectionIntro } from '@/components/SectionIntro'
 import { WhatsAppIcon } from '@/components/WhatsAppIcon'
 
-const icons = { Wifi, Coffee, Car, PawPrint, Utensils, House, QrCode, ConciergeBell, Bus }
+const icons = { Wifi, Coffee, Car, PawPrint, Utensils, House, QrCode, ConciergeBell, Bus, Flame }
 
 export default function Home() {
   return (
@@ -31,19 +31,6 @@ export default function Home() {
             const Icon = icons[icon]
             return <div className="facility" key={label}><Icon size={19} strokeWidth={1.5} /><span>{label}</span></div>
           })}
-        </div>
-      </section>
-
-      <section className="about section page-width">
-        <div className="about-image image-frame">
-          <img src={images.valley} alt="A wide mountain valley in Skardu" loading="lazy" decoding="async" />
-          <span className="image-caption">The Karakoram, at its quietest</span>
-        </div>
-        <div className="about-copy">
-          <SectionIntro eyebrow="The Greenland experience" title="A comfortable stay surrounded by Skardu's beauty">
-            <p>Greenland Resort offers a welcoming place to stay while you explore the extraordinary landscapes of Skardu — comfortable surroundings, warm hospitality, and easy access to unforgettable natural beauty.</p>
-          </SectionIntro>
-          <Link className="text-link dark-link" href="/about">More about Greenland Resort <ArrowRight size={16} /></Link>
         </div>
       </section>
 
@@ -85,6 +72,20 @@ export default function Home() {
             <span>View gallery <ArrowRight size={15} /></span>
           </Link>
         </div>
+      </section>
+
+      <section className="location section page-width" id="location">
+        <div className="location-copy">
+          <SectionIntro eyebrow="Come find us" title="Find us">
+            <p>Skardu, Gilgit-Baltistan, Pakistan</p>
+          </SectionIntro>
+          <a className="button button-forest" href={mapsUrl} target="_blank" rel="noreferrer"><MapPin size={17} /> Open in Google Maps</a>
+        </div>
+        <a className="map-card" href={mapsUrl} target="_blank" rel="noreferrer" aria-label="Open Greenland Resort location in Google Maps">
+          <div className="map-grid" />
+          <div className="map-pin"><MapPin size={24} /></div>
+          <div className="map-label"><strong>Greenland Resort</strong><span>Skardu, Pakistan <ArrowRight size={14} /></span></div>
+        </a>
       </section>
     </>
   )
