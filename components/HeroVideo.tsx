@@ -9,10 +9,9 @@ export function HeroVideo({ poster }: { poster: string }) {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const isWide = window.matchMedia('(min-width: 850px)').matches
     const connection: ConnectionLike | undefined = (navigator as unknown as { connection?: ConnectionLike }).connection
     const isSlow = connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g'
-    if (isWide && !reduceMotion && !isSlow) setCanPlay(true)
+    if (!reduceMotion && !isSlow) setCanPlay(true)
   }, [])
 
   if (!canPlay) return null
