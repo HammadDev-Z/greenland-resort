@@ -1,16 +1,32 @@
 import Link from 'next/link'
 import { ArrowDown, ArrowRight, Bus, Car, Coffee, ConciergeBell, Flame, House, MapPin, PawPrint, QrCode, Utensils, Wifi } from 'lucide-react'
-import { mapsUrl, whatsapp } from '@/lib/site-config'
+import { mapsUrl, siteUrl, whatsapp } from '@/lib/site-config'
 import { images, facilities, amenityDetails } from '@/lib/content'
 import { SectionIntro } from '@/components/SectionIntro'
 import { WhatsAppIcon } from '@/components/WhatsAppIcon'
+import { HeroVideo } from '@/components/HeroVideo'
 
 const icons = { Wifi, Coffee, Car, PawPrint, Utensils, House, QrCode, ConciergeBell, Bus, Flame }
+
+const heroPoster = '/video/hero-poster.webp'
+
+const heroVideoJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'Aerial tour of Greenland Resort, Skardu',
+  description: 'An aerial drone tour of Greenland Resort in Skardu, Gilgit-Baltistan, showcasing the resort grounds, cottages, and surrounding mountains.',
+  thumbnailUrl: [`${siteUrl}${heroPoster}`],
+  uploadDate: '2026-10-02T10:43:41+00:00',
+  contentUrl: `${siteUrl}/video/hero.mp4`,
+  duration: 'PT1M22S',
+}
 
 export default function Home() {
   return (
     <>
-      <section className="hero" id="home" style={{ backgroundImage: `url(${images.exteriorSunset})` }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(heroVideoJsonLd) }} />
+      <section className="hero" id="home" style={{ backgroundImage: `url(${heroPoster})` }}>
+        <HeroVideo poster={heroPoster} />
         <div className="hero-overlay" />
         <div className="hero-content page-width">
           <p className="eyebrow hero-eyebrow">Welcome to Greenland Resort</p>
